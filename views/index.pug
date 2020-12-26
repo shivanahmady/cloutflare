@@ -4,19 +4,35 @@ block content
   // One
   section#one.wrapper.style2.special
     header.major
-      h2.major.alt Captured Traffic Data
+      h2.major.alt HTTP Request Headers 
       sup.content
-        blockquote #{obj}
-
+        blockquote(style='\
+  overflow: overlay;\
+  text-overflow: clip;\
+  ') #{obj}
       hr
       h3 A Brief Summary
       sub 
         br 
-        | Morbi mattis ornare ornare. Duis quam turpis, gravida at leo 
+        | The Node.JS app is deployed as a versioned container on Google App Engine(Cloud Storage Buckets). The app UI/UX is mobile-friendly & adaptable across-platforms.  
         br 
-        | elementum elit fusce accumsan dui libero, quis vehicula lectus 
+        | Express/pug frameworks are implemented to deliver template rendering with functionality to return a json containing all request headers.
+        br
+        br
+        h4
+          b Secured/Configured For End-To-End Encryption 
+        | All traffic is redirected to HTTPS scheme with enforced HSTS policies and enabled constraints to use the best version of TLS for various traffic. 
+        br
+        | The Cloudflare Origin CA certificate is installed on the app server; ensuring full encryption of traffic secured with Elliptic Curve algorithms. The root ca is signed by a trusted and verified Google provided root authority.
         br 
-        | ultricies eu. In convallis amet leo non sapien iaculis efficitur consequat lorem ipsum.
+        | Firewall rules have been configured on both CloudFlare and GCP to control traffic via filters based on cookies, location, IP address, user agent, URI, and more.
+        br
+        br
+        h4
+          b Availability/Performance 
+        | Argo Smart Routing and Tiered Caching have been enabled and additional health checks are configured to monitor the availability, security, performance of the origin server.
+        br
+        | Despite minifying some of the assets of the view in the NodeJS, CloudFlare is also enabled to resize, optimize and preload/prefetch images and other resources. 
     ul.icons.major
       li
         span.icon.fa-camera-retro
@@ -27,23 +43,40 @@ block content
       li
         span.icon.fa-cloud
           span.label Upload
-  // Three
-  section#three.wrapper.style2.special
-    header.major
-      h2.major Features Implemented
-      h3 
-        | Use await gatherResponse(..) in an async function to get the response body.
-        hr
-        | Conditionals to handle requests (e.g. redirect url if request is made via curl command)
-        hr
-        | Adds custom header to all other requests made for tracking purposes.
+  section#four.wrapper
+    .inner
+      header.major
+        h2 The Clout Worker
+        code www.curl.clout.workers.dev
+      section
+        h4
+          b  The cloud worker is enabled to provide edge level handling of traffic across all HTTP requests and responses made, and in case of certain conditions, redirect appropriate requests/generate responses from the edge.
+        p With the implementation of multiple asynce functions with eventlisteners to await for curl requests made by certain user agents and handle the traffic redirection.
+        p When a user makes a curl command to parse the website, the cloud worker ensures a redirect is made unless params for no-redirect are requested.
+        p Custom headers are appended to all requests made across the site for tracking purposes. 
         br
-        | &#x9;&#x9;&#x9;&#x9;When a user makes a curl command to parse the website, the cloud worker ensures a redirect is made.
-    ul.actions
-      //- li
-      //-   a.button.special.icon.fa-download(href='#') Download
-      li
-        a.button(href='#') Learn More 
+        
+        b  You can view the custom tracking headers in the section of request headers above.
+        h4
+        b  Request Header From Cloud Worker:
+        code X-CLOUDFLARE-CURL-WORKER-ADDED
+  // Three
+  //- section#three.wrapper.style2.special
+  //-   header.major
+  //-     h2.major Features Implemented
+  //-     h3 
+  //-       | Use await gatherResponse(..) in an async function to get the response body.
+  //-       hr
+  //-       | Conditionals to handle requests (e.g. redirect url if request is made via curl command)
+  //-       hr
+  //-       | Adds custom header to all other requests made for tracking purposes.
+  //-       br
+  //-       | &#x9;&#x9;&#x9;&#x9;When a user makes a curl command to parse the website, the cloud worker ensures a redirect is made.
+  //-   ul.actions
+  //-     //- li
+  //-     //-   a.button.special.icon.fa-download(href='#') Download
+  //-     li
+  //-       a.button(href='#') Learn More 
   // Two
   section#two.wrapper
     .inner.alt
@@ -91,16 +124,7 @@ block content
           li
             span.icon.fa-desktop
               span.label Adipiscing amet sapien
-  section#four.wrapper
-    .inner
-      header.major
-        h2 The Cloud Worker
-        | curl.clout.workers.dev
-      section
-        h2 Use await gatherResponse(..) in an async function to get the response body.
-        h2 Conditionals to handle requests (e.g. redirect url if request is made via curl command)
-        blockquote When a user makes a curl command to parse the website, the cloud worker ensures a redirect is made.
-        h2 Adds custom header to all other requests made for tracking purposes.
+
         //- p
         //-   | This is 
         //-   b bold
