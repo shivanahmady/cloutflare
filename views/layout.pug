@@ -15,20 +15,16 @@ header#header
   .content
     h1
       a(href='#') CloutFlare
-    p
-      | A Node.JS showcase app deployed on Google Cloud Platform.
-      br 
-      | Secured, optimized, & accelerated with CloudFlare by Shivan A.
-      br
-      sub
-        code zone-id:766812e26715e46273564f540879945c
+    h3 A Node.JS showcase app deployed on Google Cloud Platform.
+    em Secured, optimized, & accelerated with CloudFlare.
+    hr
     ul.actions
       li
-        a.button.icon.fa-download.scrolly(href='#one') View Request Headers 
+        a.button.icon.small.fa-info.scrolly(href='#one') Request Headers 
       li
-        a.button.special.icon.fa-chevron-down.scrolly(href='#four') The Clout Worker
+        a.button.special.icon.small.fa-chevron-down.scrolly(href='#four') The Clout Worker
       li
-        a.button.special.icon.fa-info.scrolly(href='#one') Implementation
+        a.button.special.icon.small.fa-download.scrolly(href='#one') Implementation
 
   .image.phone
     .inner
@@ -43,6 +39,8 @@ footer#footer
       a.icon.fa-cloud(href='cloudflare.com')
         span.label Cloudflare
   p.copyright Showcase App For CloudFlare By Shivan Ahmady.
+  sub 
+  | zone-id: 766812e26715e46273564f540879945c
 
 // Scripts
 script(src='assets/js/jquery.min.js')

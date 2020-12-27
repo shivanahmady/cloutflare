@@ -3,63 +3,70 @@ extends layout
 block content
   // One
   section#one.wrapper.style2.special
+    ul.icons.major
+        li
+          span.icon.fa-refresh
+            span.label request
     header.major
       h2.major.alt HTTP Request Headers 
       sup.content
         blockquote(style='\
-  overflow: overlay;\
+  overflow: overlay;overflow: overlay;text-overflow: clip;margin: 1em;padding: 2em;text-align: initial;border: none;\
   text-overflow: clip;\
   ') #{obj}
-      hr
-      h3 A Brief Summary
+  section.wrapper
+    div.inner.all
+      h2 A Brief Summary
       sub 
-        br 
         | The Node.JS app is deployed as a versioned container on Google App Engine(Cloud Storage Buckets). The app UI/UX is mobile-friendly & adaptable across-platforms.  
         br 
-        | Express/pug frameworks are implemented to deliver template rendering with functionality to return a json containing all request headers.
+        | The development of the working application was done using Node.JS using dependencies such as express and pug to streamline development, and equip the application with a template engine to render the interface for the front-end. The front-end of the application is designed to adapt across different devices and is mobile-friendly. Despite the implementation of of fairly simple logic to ensure all requests headers are forwarded back to the user when responding to requests, this Node.JS app is capable of more complex functionality due to the implementation of a scalable skeleton.
         br
+        hr
         br
-        h4
+        h3
           b Secured/Configured For End-To-End Encryption 
-        | All traffic is redirected to HTTPS scheme with enforced HSTS policies and enabled constraints to use the best version of TLS for various traffic. 
+        | The security implemented ensures all traffic is secured between the client and the server; with full, end-to-end encryption. Traffic is redirected to enforce HTTPS with strict HSTS policies to provide a high level of security. This also includes disabling connections from visitors with TLS version lower than 1.3.
         br
-        | The Cloudflare Origin CA certificate is installed on the app server; ensuring full encryption of traffic secured with Elliptic Curve algorithms. The root ca is signed by a trusted and verified Google provided root authority.
+        | The Cloudflare generated Origin CA certificate is installed on the app server on Google Cloud Platform; creating a complete encryption between GCP and CloudFlare with certificates using the Elliptic Curve algorithms. Lastly, the Root CA is trusted and verified and provided by Google Cloud Platform. Edge Certificates have also been provided to be in the pack to be listed and managed by Cloudflare.
         br 
-        | Firewall rules have been configured on both CloudFlare and GCP to control traffic via filters based on cookies, location, IP address, user agent, URI, and more.
+        | Moreover, despite enabling the web application firewall, additional firewall rules are implemented on both CloudFlare and Google App Engine to provide more control of traffic, and implement filters to remove potential threats based on cookies, location, IP address, user agent, URI, etc. For example, increasing challenges to reduce bots, blocking based on reputation, blocking redirects based on cookie parameters, etc.
         br
+        hr
         br
-        h4
+        h3
           b Availability/Performance 
-        | Argo Smart Routing and Tiered Caching have been enabled and additional health checks are configured to monitor the availability, security, performance of the origin server.
+        | The implementation include enabling Argo Smart Routing and Tiered Caching and insuring to configure health checks and browser monitoring. By configuring it to improve visibility and run monitoring to detect precise availability and latency, the application is positioned to ensure proper traffic flow from the origin server, and offers the capability to uncover insight about bottlenecks and data anomalies.
         br
-        | Despite minifying some of the assets of the view in the NodeJS, CloudFlare is also enabled to resize, optimize and preload/prefetch images and other resources. 
-    ul.icons.major
-      li
-        span.icon.fa-camera-retro
-          span.label Shoot
-      li
-        span.icon.fa-refresh
-          span.label Process
-      li
-        span.icon.fa-cloud
-          span.label Upload
-  section#four.wrapper
+        | To optimize performance, the application is configured to minify front-end resources, resize/reformat images as well as tweak preloading/prefetching resources to prioritize the resource loading and mitigate performance bottlenecks in response time.
+        br
+        br
+  section#four.wrapper.style1.special
     .inner
+      ul.icons.major
+        li
+          span.icon.fa-code
+            span.label request
       header.major
         h2 The Clout Worker
         code www.curl.clout.workers.dev
       section
         h4
-          b  The cloud worker is enabled to provide edge level handling of traffic across all HTTP requests and responses made, and in case of certain conditions, redirect appropriate requests/generate responses from the edge.
-        p With the implementation of multiple asynce functions with eventlisteners to await for curl requests made by certain user agents and handle the traffic redirection.
-        p When a user makes a curl command to parse the website, the cloud worker ensures a redirect is made unless params for no-redirect are requested.
-        p Custom headers are appended to all requests made across the site for tracking purposes. 
-        br
-        
-        b  You can view the custom tracking headers in the section of request headers above.
+          b  The cloud worker is enabled to provide edge level handling of request and response traffic, and configuring conditions to redirect appropriate requests/generate responses/ create parallel requests/responses from the edge.
+        p The curl cloud worker is implemented to get triggered by event listeners. Once triggered, the async functions provide the await to check if a curl request is made by specific agents. If so, curl requests are redirected to another page, and resolved by returning the response of the redirected site. Requests with the appropriate params (noredir) to can forbid redirection. During this case, the redirection will not be triggered.
+        p In summary, if a user makes a curl command to parse the website, the cloud worker ensures a redirect is made and returns the response the the client.
+        p Most importantly, The Cloud Worker also appends params to requests as they coming and can provide us a way to implement custom headers to all requests handled across the site and through its path. In our example, we have only appended the following request param key which is accessible via the www.cloutflare.net.
+        hr
         h4
-        b  Request Header From Cloud Worker:
+        b Request Header From Cloud Worker:
         code X-CLOUDFLARE-CURL-WORKER-ADDED
+        br
+        br
+        ul.actions
+          li
+            a.button.icon.small.fa-info.scrolly(href='#one') Find In Request Header
+
+        br
   // Three
   //- section#three.wrapper.style2.special
   //-   header.major
@@ -86,44 +93,30 @@ block content
         .content
           h3 Experience
           p
-            | Morbi mattis ornare ornare. Duis quam turpis, gravida at leo elementum elit fusce accumsan dui
-            | libero, quis vehicula lectus ultricies eu. In convallis amet leo non sapien iaculis efficitur
-            | consequat lorem ipsum.
+            | I learned what Cloud Workers are and how to develop workers to improve web app. 
+            | I learned how to implement use cases while gaining insight on best ways to enable analytics to 
+            | calculate latency with more precise accuracy via edge computing. Lastly, I learned how to incorporate better rules to improve security and filter threats.
+          blockquote The target customers that are small will likely take advantage of performance enhancements, if they do not have access to a development team. Bigger enterprises that have profits affected significantly due to performance lag will likely have dedicated teams to optimize customer facing apps. Therefore, focusing on customer experience by providing new/creative avenues to integrate Cloudflare and gain value will yield happier customers.
       section.spotlight
         .image
           img(src='images/pic02.jpg' alt='')
         .content
           h3 Argo Tunnels / Cloudflare Workers
           p
-            | Morbi mattis ornare ornare. Duis quam turpis, gravida at leo elementum elit fusce accumsan dui
-            | libero, quis vehicula lectus ultricies eu. In convallis amet leo non sapien iaculis efficitur
-            | consequat lorem ipsum.
+            | In regards to cloud workers, a key finding is while the trend towards micro-services and lightweight platforms is accelerating, the question is what type of efficiency is optimal or preferred? Overall my experience with Cloud Workers has been very positive and rewarding. I am learning more aware of the large upside to small isolates, and how they can effectively resolve legacy challenges. However, as businesses scale up, the presumption is more request distributions grow exponentially, and isolates are releases accelerate. Therefore, the more tenants deployed, the less work that each one does. Overtime, what that ends up meaning is that we are actually diffusing our
+            | traffic across all of the tenants while creating expensive overhead. The challenge appears to be making sure we don’t lose sight of the overhead of context switching because of a heavy focus primarily on efficiency.
       section.spotlight
         .image
           img(src='images/pic02.jpg' alt='')
         .content
-          h3 Prospectus / Takeaways
+          h3 Description 
           p
-            | Morbi mattis ornare ornare. Duis quam turpis, gravida at leo elementum elit fusce accumsan dui
-            | libero, quis vehicula lectus ultricies eu. In convallis amet leo non sapien iaculis efficitur
-            | consequat lorem ipsum.
-      section.special
-        ul.icons.labeled
-          li
-            span.icon.fa-camera-retro
-              span.label Ipsum lorem accumsan
-          li
-            span.icon.fa-refresh
-              span.label Sed vehicula elementum
-          li
-            span.icon.fa-cloud
-              span.label Elit fusce consequat
-          li
-            span.icon.fa-code
-              span.label Lorem nullam tempus
-          li
-            span.icon.fa-desktop
-              span.label Adipiscing amet sapien
+          | Cloud Workers: These are small minions with a temporary capacity to help solve a quick and short- lived task.
+          br
+          
+          br
+          | Argo Tunnel: This is method for creating secure path/communication channel between two houses without opening doors, windows, or any entries to create risk.
+
 
         //- p
         //-   | This is 
