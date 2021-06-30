@@ -1,7 +1,7 @@
 {
   "name": "cloutflare",
   "version": "1.0.0",
-  "description": "Cloutflare.net web app for Cloudflare interview.",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
@@ -24,7 +24,7 @@
     "url": "git+https://github.com/shivanahmady/cloutflare.git"
   },
   "author": "Shivan Ahmady",
-  "license": "ISC",
+  "license": "",
   "bugs": {
     "url": "https://github.com/shivanahmady/cloutflare/issues"
   },
